@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1C30">
+
+    <TextView
+        android:id="@+id/phoneNumberLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="244dp"
+        android:fontFamily="@font/oxygen"
+        android:letterSpacing=".09"
+        android:text="mobile number"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/userPhoneEntry3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/userPhoneEntry3"
+        android:layout_width="343dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="272dp"
+        android:autoText="false"
+        android:ems="10"
+        android:hint="(XXX)-XXX-XXXX"
+        android:inputType="phone"
+        android:shadowColor="#000000"
+        android:singleLine="true"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#00BCD4"
+        android:textColorHint="#8DFFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameLabel2"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/oxygen"
+        android:letterSpacing=".09"
+        android:text="name"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/userPhoneEntry3"
+        tools:layout_editor_absoluteX="34dp" />
+
+    <EditText
+        android:id="@+id/userNameEntry"
+        android:layout_width="343dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="53dp"
+        android:autoText="false"
+        android:ems="10"
+        android:hint="Enter name"
+        android:inputType="text"
+        android:shadowColor="#000000"
+        android:singleLine="true"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#00BCD4"
+        android:textColorHint="#8DFFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPhoneEntry3" />
+
+    <EditText
+        android:id="@+id/userPasswordEntry2"
+        android:layout_width="343dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="61dp"
+        android:autoText="false"
+        android:ems="10"
+        android:hint="Enter password"
+        android:inputType="text"
+        android:shadowColor="#000000"
+        android:singleLine="true"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#00BCD4"
+        android:textColorHint="#8DFFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEntry"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <TextView
+        android:id="@+id/nameLabel3"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:fontFamily="@font/oxygen"
+        android:letterSpacing=".09"
+        android:text="password"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/userPasswordEntry2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEntry"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:text="Edit Account"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
