@@ -30,6 +30,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name = "APPLICATION_ID"
+            android:value = "${APPLICATION_ID}"/>
+
+        <meta-data
+            android:name = "CLIENT_KEY"
+            android:value = "${CLIENT_KEY}"/>
     </application>
 
 </manifest>
