@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = etName.getText().toString();
                 String password = etPassword.getText().toString();
                 Log.i(TAG, "logging in user as " + username);
+                Log.i(TAG, "password is " + password);
                 loginUser(username, password);
             }
         });

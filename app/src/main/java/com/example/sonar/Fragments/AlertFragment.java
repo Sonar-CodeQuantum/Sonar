@@ -21,7 +21,7 @@ public class AlertFragment extends Fragment {
     public AlertFragment() {
         // Required empty public constructor
     }
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
