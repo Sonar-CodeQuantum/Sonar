@@ -56,7 +56,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivProfilePicture = itemView.findViewById(R.id.ivProfilePicture);
+            ivProfilePicture = itemView.findViewById(R.id.profilePicture);
             tvName = itemView.findViewById(R.id.tvName);
             tvNumber = itemView.findViewById(R.id.tvNumber);
         }
