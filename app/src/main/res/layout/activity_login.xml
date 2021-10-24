@@ -19,6 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sonar_logo_transparent" />
 
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/oxygen"
+        android:letterSpacing=".09"
+        android:text="password"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
@@ -34,10 +47,10 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+        app:layout_constraintStart_toStartOf="@+id/btnSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLabel" />
 
     <EditText
         android:id="@+id/etName"
@@ -56,8 +69,8 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/etPassword"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/NameLabel" />
+        app:layout_constraintStart_toStartOf="@+id/passwordLabel"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
     <EditText
         android:id="@+id/etNumber"
@@ -77,11 +90,11 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/etName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/NameLabel"
+        app:layout_constraintStart_toStartOf="@+id/nameLabel"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
 
     <TextView
-        android:id="@+id/NameLabel"
+        android:id="@+id/nameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -123,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/SonarLogo" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginLeft="25dp"
@@ -147,30 +160,16 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintStart_toStartOf="@+id/btnSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
     <TextView
-        android:id="@+id/tvSignUp"
+        android:id="@+id/tvSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up →"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/DontHaveAccTxt"
         app:layout_constraintTop_toBottomOf="@+id/DontHaveAccTxt" />
-
-    <TextView
-        android:id="@+id/nameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/oxygen"
-        android:letterSpacing=".09"
-        android:text="password"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
