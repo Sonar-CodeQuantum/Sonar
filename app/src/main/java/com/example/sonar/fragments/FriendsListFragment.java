@@ -17,12 +17,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sonar.MainActivity;
 import com.example.sonar.R;
 import com.example.sonar.adapters.FriendsAdapter;
 import com.example.sonar.models.Friend;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -93,24 +96,28 @@ public class FriendsListFragment extends Fragment {
         query.whereEqualTo(Friend.KEY_USER, ParseUser.getCurrentUser()); // get friends of this user
         query.addDescendingOrder("name");
 
-        // start async query for posts
-        query.findInBackground((friends, e) -> {
-            if (e != null) { // error
-                Log.e(TAG, "Parse Exception while retrieving friends: " + e);
-                return;
-            } else { // on success
-                if (friends.isEmpty()) {
-                    tvEmptyMsg.setText("You have yet to add friends to your list!" +
-                            System.getProperty("line.separator") +
-                            "Add friends to notify them when you have an alert!");
-                } else {
-                    // list friends
-                    for (Friend friend : friends) {
-                        Log.i(TAG, "Reading friend: " + friend.getName()
-                                + " @" + friend.getNumber());
+        // start async query for friends
+        query.findInBackground(new FindCallback<Friend>() {
+            @Override
+            public void done(List<Friend> friends, ParseException e) {
+                if (e != null) { // error
+                    Log.e(TAG, "Parse Exception while retrieving friends: " + e);
+                    return;
+                } else { // on success
+                    Toast.makeText(getContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    if (friends.isEmpty()) {
+                        tvEmptyMsg.setText("You have yet to add friends to your list!" +
+                                System.getProperty("line.separator") +
+                                "Add friends to notify them when you have an alert!");
+                    } else {
+                        // list friends
+                        for (Friend friend : friends) {
+                            Log.i(TAG, "Reading friend: " + friend.getName()
+                                    + " @" + friend.getNumber());
+                        }
+                        friendsList.addAll(friends);
+                        adapter.notifyDataSetChanged();
                     }
-                    friendsList.addAll(friends);
-                    adapter.notifyDataSetChanged();
                 }
             }
         });

@@ -5,7 +5,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-@ParseClassName("Friend")
+@ParseClassName("Friends")
 public class Friend extends ParseObject {
     // keys from post class in database
     public static final String KEY_USER = "user";
