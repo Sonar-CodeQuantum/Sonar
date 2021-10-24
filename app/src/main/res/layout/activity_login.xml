@@ -40,6 +40,7 @@
         android:ems="10"
         android:hint="Enter password"
         android:inputType="text"
+        android:password="true"
         android:shadowColor="#000000"
         android:singleLine="true"
         android:textColor="#FFFFFF"
