@@ -14,16 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sonar">
         <activity
-            android:name=".MainActivity"
+            android:name=".FragmentsTimelineActivity"
             android:exported="false" />
         <activity
             android:name=".SigninActivity"
             android:exported="false" />
         <activity
-            android:name=".SigninLoginOption"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".SigninLoginOption"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

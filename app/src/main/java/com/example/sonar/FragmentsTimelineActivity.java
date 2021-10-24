@@ -1,0 +1,55 @@
+package com.example.sonar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.example.sonar.Fragments.AlertFragment;
+import com.example.sonar.Fragments.FriendsListFragment;
+import com.example.sonar.Fragments.ProfileFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class FragmentsTimelineActivity extends AppCompatActivity {
+
+    final FragmentManager fragmentManager = getSupportFragmentManager();
+    private BottomNavigationView bottomNavigationView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fragments_timeline);
+
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.action_friends_list:
+                        Toast.makeText(FragmentsTimelineActivity.this, "Friends List", Toast.LENGTH_SHORT).show();
+                        fragment = new FriendsListFragment();
+                        break;
+                    case R.id.action_alert:
+                        Toast.makeText(FragmentsTimelineActivity.this, "Alert", Toast.LENGTH_SHORT).show();
+                        fragment = new AlertFragment();
+                        break;
+                    case R.id.action_profile:
+                    default:
+                        Toast.makeText(FragmentsTimelineActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        fragment = new ProfileFragment();
+                        break;
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                return true;
+            }
+        });
+        // Set default selection
+        bottomNavigationView.setSelectedItemId(R.id.action_alert);
+    }
+}
