@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddFriendFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1F1C30">
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="192dp"
+            android:layout_height="193dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/addphoto" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoText="false"
+            android:ems="10"
+            android:hint="Enter name"
+            android:inputType="text"
+            android:shadowColor="#000000"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#00BCD4"
+            android:textColorHint="#8DFFFFFF"
+            android:textColorLink="#FFFFFF"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
+            app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+        <EditText
+            android:id="@+id/etNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoText="false"
+            android:ems="10"
+            android:hint="(XXX) XXX-XXXX"
+            android:inputType="phone"
+            android:shadowColor="#000000"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#00BCD4"
+            android:textColorHint="#8DFFFFFF"
+            android:textColorLink="#FFFFFF"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@+id/etName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/nameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
+
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/oxygen"
+            android:letterSpacing=".09"
+            android:text="name"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/etName"
+            app:layout_constraintTop_toBottomOf="@+id/etNumber" />
+
+        <TextView
+            android:id="@+id/phoneNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/oxygen"
+            android:letterSpacing=".09"
+            android:text="mobile number"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/etNumber"
+            app:layout_constraintTop_toBottomOf="@+id/ivPhoto" />
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="25dp"
+            android:background="#2B972F"
+            android:fontFamily="@font/oxygen"
+            android:text="Confirm Add"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+        <TextView
+            android:id="@+id/tvWarn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/oxygen"
+            android:text="Adding this person gives them access to your location upon sending an alert!"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
+            app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
