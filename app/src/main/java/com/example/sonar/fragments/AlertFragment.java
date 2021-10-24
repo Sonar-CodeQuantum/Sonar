@@ -18,17 +18,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import androidx.legacy.app.FragmentCompat;
 
 import com.example.sonar.R;
+import com.example.sonar.models.Friend;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AlertFragment extends Fragment {
 
@@ -39,7 +45,19 @@ public class AlertFragment extends Fragment {
     private ImageButton alertbutton;
     private int alertState = 0;
     String message;
-    String[] phoneNo;
+
+    ArrayList<String> friendNums;
+
+    public class Coordinates {
+        private double latitude;
+        private double longitude;
+        public Coordinates(double latitude, double longitude) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
+        public double getLatitude() {  return latitude; }
+        public double getLongitude() {  return longitude; }
+    }
 
     public AlertFragment() {
         // Required empty public constructor
@@ -71,38 +89,42 @@ public class AlertFragment extends Fragment {
                 if (alertState == 0) {
                     alertbutton.setBackgroundResource(R.drawable.alert_button_red);
                     alertState = 1;
-                    getMyLocation(fusedLocationClient);
-
-                    //call method to put user's friends contact list into an Array by going through the users friends list on parse
-                    getFriendsNum();
-                    //another method call - pass in array and go each number sending alert messages to the friends
-                    textFriends();
+                    alert();
                 } else {
                     alertbutton.setBackgroundResource(R.drawable.alert_button);
                     alertState = 0;
-
                 }
-
             }
         });
     }
 
-    public void getMyLocation(FusedLocationProviderClient fusedLocationClient) {
+    private void alert() {
+        Coordinates coords = getLocationCoords(fusedLocationClient);
+        friendNums = getFriendsNum();
+        textFriends(coords);
+    }
+
+    public Coordinates getLocationCoords(FusedLocationProviderClient fusedLocationClient) {
         // Get last known recent location using new Google Play Services SDK (v11+)
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, },
                     PackageManager.PERMISSION_GRANTED);
-            return;
         }
+        Coordinates coords = null;
         this.fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         // GPS location can be null if GPS is switched off
                         if (location != null) {
-                            Log.i(TAG, "retrieved location: " + location.getLatitude() + "," + location.getLongitude());
+                            // LOCATION ACQUIRED
+                            Coordinates coords = new Coordinates(location.getLatitude(), location.getLongitude());
+                            Log.i(TAG, "retrieved location: " +
+                                    coords.getLatitude() + "," + coords.getLongitude());
                             Toast.makeText(getContext(), "Location retrieved. Sending alert!",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -115,26 +137,50 @@ public class AlertFragment extends Fragment {
                         e.printStackTrace();
                     }
                 });
+        return coords;
     }
 
-    private void textFriends(/*pass array*/) {
-        //phoneNo =;
-        message = "You friend has set off an alert!";
+    private ArrayList<String> getFriendsNum() {
+        ArrayList<String> numbers = new ArrayList<>();
+        ParseQuery<Friend> query = ParseQuery.getQuery(Friend.class);
+        query.include(Friend.KEY_USER); // include ref to user key
+        query.whereEqualTo(Friend.KEY_USER, ParseUser.getCurrentUser()); // get friends of this user
+
+        // start async query for friends
+        query.findInBackground(new FindCallback<Friend>() {
+            @Override
+            public void done(List<Friend> friends, ParseException e) {
+                if (e != null) { // error
+                    Log.e(TAG, "Parse Exception while retrieving friends: " + e);
+                } else { // on success
+                    for (Friend friend : friends) {
+                        numbers.add(friend.getNumber());
+                    }
+                }
+            }
+        });
+        return numbers;
+    }
+
+    private void textFriends(Coordinates coords) {
+        ParseUser user = ParseUser.getCurrentUser();
+
+        String baseUrl = "https://maps.google.com/maps?q=%f,%f";
+        String url = String.format(baseUrl, coords.getLatitude(), coords.getLongitude());
+
+        message = "You friend has set off an emergency alert! Please take diligent action!\n" +
+                "Name: " + user.getUsername() + "\nLocation: " + url +
+                "\n\n(Sent from the Sonar App)";
 
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                Manifest.permission.SEND_SMS)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.SEND_SMS)) {
             } else {
                 requestPermissions(new String[]{Manifest.permission.SEND_SMS},
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
             }
         }
-    }
-
-    private void getFriendsNum() {
-
-
     }
 
     @Override
@@ -145,18 +191,16 @@ public class AlertFragment extends Fragment {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     SmsManager smsManager = SmsManager.getDefault();
 
-                    //for loop around phone number array here!!
-                    smsManager.sendTextMessage(phoneNo, null, message, null, null);
-
-                    Toast.makeText(getActivity(), "SMS sent.",
-                            Toast.LENGTH_LONG).show();
+                    for (String phoneNo : friendNums) {
+                        smsManager.sendTextMessage(phoneNo, null, message, null, null);
+                    }
+                    Toast.makeText(getActivity(), "Alerts sent.", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getActivity(),
-                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
                     return;
                 }
             }
         }
-
     }
 }

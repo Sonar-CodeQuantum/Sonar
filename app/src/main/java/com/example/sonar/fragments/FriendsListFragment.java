@@ -104,7 +104,6 @@ public class FriendsListFragment extends Fragment {
                     Log.e(TAG, "Parse Exception while retrieving friends: " + e);
                     return;
                 } else { // on success
-                    Toast.makeText(getContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                     if (friends.isEmpty()) {
                         tvEmptyMsg.setText("You have yet to add friends to your list!" +
                                 System.getProperty("line.separator") +
