@@ -19,7 +19,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
-            android:background="#BF2C315B"
+            android:background="@drawable/custom_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:background="#BF2C315B"
+            android:background="@drawable/custom_button"
             android:orientation="horizontal"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="@+id/rvFriends"
@@ -48,6 +48,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Add Friend"
+                android:textColor="#FFFFFF"
                 android:textSize="28dp" />
 
             <ImageView
@@ -70,6 +71,22 @@
             app:layout_constraintEnd_toEndOf="@+id/rvFriends"
             app:layout_constraintStart_toStartOf="@+id/rvFriends"
             app:layout_constraintTop_toTopOf="@+id/rvFriends" />
+
+        <TextView
+            android:id="@+id/friendsListLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="99dp"
+            android:fontFamily="@font/oxygen"
+            android:text="Friends List"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addFriendContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.727" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
