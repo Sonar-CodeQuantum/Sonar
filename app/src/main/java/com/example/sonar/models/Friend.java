@@ -8,7 +8,7 @@ import com.parse.ParseUser;
 @ParseClassName("Friend")
 public class Friend extends ParseObject {
     // keys from post class in database
-    public static final String KEY_USER = "userId";
+    public static final String KEY_USER = "user";
     public static final String KEY_NAME = "name";
     public static final String KEY_NUMBER = "mobile";
     public static final String KEY_PHOTO = "photo";
