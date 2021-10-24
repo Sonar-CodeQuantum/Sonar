@@ -18,15 +18,15 @@
         android:text="password"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/userPasswordEntry"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserNameEntry"
+        app:layout_constraintTop_toBottomOf="@+id/etName"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/userPasswordEntry"
+        android:id="@+id/etPassword"
         android:layout_width="343dp"
         android:layout_height="48dp"
         android:layout_marginTop="296dp"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/UserNameEntry"
+        android:id="@+id/etName"
         android:layout_width="343dp"
         android:layout_height="48dp"
         android:layout_marginTop="177dp"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/SignUpText" />
 
     <EditText
-        android:id="@+id/UserPhoneEntry"
+        android:id="@+id/etNumber"
         android:layout_width="343dp"
         android:layout_height="48dp"
         android:layout_marginTop="36dp"
@@ -84,7 +84,7 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/UserNameEntry"
+        app:layout_constraintBottom_toTopOf="@+id/etName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignUpText" />
@@ -100,11 +100,11 @@
         android:text="name"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/UserNameEntry"
+        app:layout_constraintBottom_toTopOf="@+id/etName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserPhoneEntry" />
+        app:layout_constraintTop_toBottomOf="@+id/etNumber" />
 
     <TextView
         android:id="@+id/phoneNumberLabel"
@@ -115,7 +115,7 @@
         android:text="mobile number"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/UserPhoneEntry"
+        app:layout_constraintBottom_toTopOf="@+id/etNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +149,7 @@
         app:layout_constraintTop_toBottomOf="@+id/SonarLogo" />
 
     <Button
-        android:id="@+id/signInButton"
+        android:id="@+id/btnSignIn"
         android:layout_width="321dp"
         android:layout_height="51dp"
         android:layout_marginTop="23dp"
@@ -159,7 +159,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordEntry"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -179,7 +179,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/SignUp"
+        android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up →"
