@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/ivName"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -33,7 +33,7 @@
         tools:text="Firstname Lastname" />
 
     <TextView
-        android:id="@+id/ivNumber"
+        android:id="@+id/tvNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -43,6 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivProfilePicture"
-        app:layout_constraintTop_toBottomOf="@+id/ivName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
         tools:text="+1 (XXX) XXX-XXXX" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.sonar.R;
 import com.example.sonar.models.Friend;
+import com.parse.ParseFile;
 
 import java.util.List;
 
@@ -48,19 +50,26 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
         // view elements from item_friend layout
         private ImageView ivProfilePicture;
-        private TextView ivName;
-        private TextView ivNumber;
+        private TextView tvName;
+        private TextView tvNumber;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ivProfilePicture = itemView.findViewById(R.id.ivProfilePicture);
-            ivName = itemView.findViewById(R.id.ivName);
-            ivNumber = itemView.findViewById(R.id.ivNumber);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvNumber = itemView.findViewById(R.id.tvNumber);
         }
 
         public void bind(Friend friend) {
-            // TODO: bind data to view elements
+            // bind data to view elements
+            tvName.setText(friend.getName());
+            tvNumber.setText(friend.getNumber());
+
+            ParseFile image = friend.getPhoto();
+            if (image != null) {
+                Glide.with(context).load(image.getUrl()).into(ivProfilePicture);
+            }
         }
     }
 
