@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sonar">
         <activity
+            android:name=".FragmentsTimelineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlertButton"
+            android:exported="false" />
+        <activity
             android:name=".SigninActivity"
             android:exported="false" />
         <activity
