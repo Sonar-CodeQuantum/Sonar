@@ -12,12 +12,11 @@
         android:id="@+id/SonarLogo"
         android:layout_width="192dp"
         android:layout_height="193dp"
-        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sonar_logo_transparent" />
+        app:srcCompat="@drawable/sonar_logo_transparent"
+        tools:layout_editor_absoluteY="50dp" />
 
     <TextView
         android:id="@+id/passwordLabel"
@@ -35,7 +34,7 @@
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:autoText="false"
         android:ems="10"
         android:hint="Enter password"
@@ -74,9 +73,8 @@
 
     <EditText
         android:id="@+id/etNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:autoText="false"
         android:ems="10"
         android:hint="(XXX)-XXX-XXXX"
@@ -140,7 +138,7 @@
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="25dp"
         android:background="@color/purple_500"
         android:fontFamily="@font/oxygen"
@@ -158,8 +156,6 @@
         android:fontFamily="@font/oxygen"
         android:text="Don't have an account?"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btnSignUp"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
@@ -169,7 +165,7 @@
         android:layout_height="wrap_content"
         android:text="Sign In →"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/DontHaveAccTxt"
-        app:layout_constraintTop_toBottomOf="@+id/DontHaveAccTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/DontHaveAccTxt"
+        tools:layout_editor_absoluteX="25dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

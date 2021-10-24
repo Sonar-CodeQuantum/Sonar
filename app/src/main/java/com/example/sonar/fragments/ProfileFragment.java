@@ -1,4 +1,4 @@
-package com.example.sonar.Fragments;
+package com.example.sonar.fragments;
 
 import android.os.Bundle;
 

@@ -12,7 +12,7 @@
         android:id="@+id/SonarLogo"
         android:layout_width="192dp"
         android:layout_height="193dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
