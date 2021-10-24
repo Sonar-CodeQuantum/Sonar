@@ -1,64 +1,39 @@
 package com.example.sonar.fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.sonar.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.parse.ParseUser;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AlertFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AlertFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "AlertFragment";
+    private FusedLocationProviderClient fusedLocationClient;
 
     private ImageButton alertbutton;
     private int alertState = 0;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public AlertFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AlertFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AlertFragment newInstance(String param1, String param2) {
-        AlertFragment fragment = new AlertFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -66,27 +41,57 @@ public class AlertFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_alert, container, false);
-
-
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
         // Setup any handles to view objects here
         alertbutton = view.findViewById(R.id.alertbutton);
         alertbutton.setBackgroundResource(R.drawable.alert_button);
         alertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(alertState == 0)
-                {
+                if (alertState == 0) {
                     alertbutton.setBackgroundResource(R.drawable.alert_button_red);
                     alertState = 1;
-                }
-                else{
+                    getMyLocation(fusedLocationClient);
+                } else {
                     alertbutton.setBackgroundResource(R.drawable.alert_button);
                     alertState = 0;
                 }
             }
         });
+    }
+
+    public void getMyLocation(FusedLocationProviderClient fusedLocationClient) {
+        // Get last known recent location using new Google Play Services SDK (v11+)
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, },
+                    PackageManager.PERMISSION_GRANTED);
+            return;
+        }
+        this.fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // GPS location can be null if GPS is switched off
+                        if (location != null) {
+                            Log.i(TAG, "retrieved location: " + location.getLatitude() + "," + location.getLongitude());
+                            Toast.makeText(getContext(), "Location retrieved. Sending alert!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("MapDemoActivity", "Error trying to get last GPS location");
+                        e.printStackTrace();
+                    }
+                });
     }
 }
