@@ -7,14 +7,18 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import android.telephony.SmsManager;
 
 import android.util.Log;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import androidx.legacy.app.FragmentCompat;
 
 import com.example.sonar.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -24,16 +28,27 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.parse.ParseUser;
 
+import java.lang.reflect.Array;
+
 public class AlertFragment extends Fragment {
 
     private static final String TAG = "AlertFragment";
     private FusedLocationProviderClient fusedLocationClient;
 
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     private ImageButton alertbutton;
     private int alertState = 0;
+    String message;
+    String[] phoneNo;
 
     public AlertFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -57,10 +72,17 @@ public class AlertFragment extends Fragment {
                     alertbutton.setBackgroundResource(R.drawable.alert_button_red);
                     alertState = 1;
                     getMyLocation(fusedLocationClient);
+
+                    //call method to put user's friends contact list into an Array by going through the users friends list on parse
+                    getFriendsNum();
+                    //another method call - pass in array and go each number sending alert messages to the friends
+                    textFriends();
                 } else {
                     alertbutton.setBackgroundResource(R.drawable.alert_button);
                     alertState = 0;
+
                 }
+
             }
         });
     }
@@ -93,5 +115,48 @@ public class AlertFragment extends Fragment {
                         e.printStackTrace();
                     }
                 });
+    }
+
+    private void textFriends(/*pass array*/) {
+        //phoneNo =;
+        message = "You friend has set off an alert!";
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                Manifest.permission.SEND_SMS)) {
+            } else {
+                requestPermissions(new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+    }
+
+    private void getFriendsNum() {
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    SmsManager smsManager = SmsManager.getDefault();
+
+                    //for loop around phone number array here!!
+                    smsManager.sendTextMessage(phoneNo, null, message, null, null);
+
+                    Toast.makeText(getActivity(), "SMS sent.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getActivity(),
+                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+
     }
 }
