@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SigninLoginOption extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     private Button goToSignUpPage;
     private Button goToLoginPage;
@@ -15,7 +15,7 @@ public class SigninLoginOption extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin_login_option);
+        setContentView(R.layout.activity_start);
 
         goToSignUpPage = (Button) findViewById(R.id.signUpBtn);
         goToLoginPage = (Button) findViewById(R.id.loginBtn);
@@ -38,7 +38,7 @@ public class SigninLoginOption extends AppCompatActivity {
     }
 
     private void goToSignUpPage() {
-        Intent intent = new Intent(this, SigninActivity.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
