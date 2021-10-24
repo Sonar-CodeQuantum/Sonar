@@ -20,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String TAG = "LoginActivity";
 
-    private EditText etNumber;
     private EditText etName;
     private EditText etPassword;
     private Button btnLogin;
@@ -30,36 +29,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etNumber = findViewById(R.id.etNumber);
         etName = findViewById(R.id.etName);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnSignUp);
-
-        etNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = etName.getText().toString();
                 String password = etPassword.getText().toString();
-                String number = etNumber.getText().toString();
                 Log.i(TAG, "logging in user as " + username);
-                loginUser(username, password, number);
+                loginUser(username, password);
             }
         });
     }
 
-    private void loginUser(String username, String password, String number) {
+    private void loginUser(String username, String password) {
         Log.i(TAG, "Attempting to login user: " + username);
-
         // verify user and navigate to login on success
-        if (PhoneNumberUtils.isGlobalPhoneNumber(number)) {
-            Toast.makeText(LoginActivity.this,
-                    "Invalid phone number.",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         ParseUser.logInInBackground(username, password, (user, e) -> {
             if (user == null || e != null) { // login failure
                 Log.e(TAG, "Login unsuccessful: " + e);

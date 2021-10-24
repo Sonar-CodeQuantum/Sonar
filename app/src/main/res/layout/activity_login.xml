@@ -12,7 +12,7 @@
         android:id="@+id/SonarLogo"
         android:layout_width="192dp"
         android:layout_height="193dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,51 +73,17 @@
         app:layout_constraintStart_toStartOf="@+id/passwordLabel"
         app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
-    <EditText
-        android:id="@+id/etNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:autoText="false"
-        android:ems="10"
-        android:hint="(XXX)-XXX-XXXX"
-        android:inputType="phone"
-        android:shadowColor="#000000"
-        android:singleLine="true"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#00BCD4"
-        android:textColorHint="#8DFFFFFF"
-        android:textColorLink="#FFFFFF"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/etName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
-
     <TextView
         android:id="@+id/nameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/oxygen"
         android:letterSpacing=".09"
         android:text="name"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/etName"
-        app:layout_constraintTop_toBottomOf="@+id/etNumber" />
-
-    <TextView
-        android:id="@+id/phoneNumberLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/oxygen"
-        android:letterSpacing=".09"
-        android:text="mobile number"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/etNumber"
         app:layout_constraintTop_toBottomOf="@+id/SignUpText" />
 
     <TextView
