@@ -1,4 +1,5 @@
 # SONAR
+By Vanessa Gerber, Tiba Al Anssari, Kimberly Flores
 
 ## Inspiration
 We all have had situations where we feel like we could possibly be in danger and typing out a text message to our loved ones may not be feasible. With that in mind, we created an app to make it easy to push out an alert to all of our friends from a click of a button, letting them know of your current location!
