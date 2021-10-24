@@ -9,7 +9,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/SonarLogo"
+        android:id="@+id/ivPhoto"
         android:layout_width="192dp"
         android:layout_height="193dp"
         android:layout_marginTop="72dp"
@@ -48,9 +48,9 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnSignUp"
+        app:layout_constraintStart_toStartOf="@+id/btnConfirm"
         app:layout_constraintTop_toBottomOf="@+id/passwordLabel" />
 
     <EditText
@@ -100,10 +100,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SonarLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPhoto" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnConfirm"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginLeft="25dp"
@@ -127,8 +127,8 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+        app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
 
     <TextView
         android:id="@+id/tvSignIn"

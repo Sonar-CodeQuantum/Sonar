@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
         etNumber = findViewById(R.id.etNumber);
         etName = findViewById(R.id.etName);
         etPassword = findViewById(R.id.etPassword);
-        btnSignUp = findViewById(R.id.btnSignUp);
+        btnSignUp = findViewById(R.id.btnConfirm);
 
         etNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
