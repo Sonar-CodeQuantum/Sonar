@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         etNumber = findViewById(R.id.etNumber);
         etName = findViewById(R.id.etName);
         etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnSignUp);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
