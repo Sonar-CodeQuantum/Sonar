@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseUser;
+
 public class StartActivity extends AppCompatActivity {
 
     private Button goToSignUpPage;
@@ -17,6 +19,11 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        // if the user is already logged in, redirect to Alert Activity
+        if (ParseUser.getCurrentUser() != null) { // user is logged in
+            gotoMainActivity();
+        }
+
         goToSignUpPage = (Button) findViewById(R.id.signUpBtn);
         goToLoginPage = (Button) findViewById(R.id.loginBtn);
 
@@ -24,7 +31,6 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goToSignUpPage();
-
             }
         });
 
@@ -32,7 +38,6 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goToLoginPage();
-
             }
         });
     }
@@ -45,5 +50,10 @@ public class StartActivity extends AppCompatActivity {
     private void goToLoginPage() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    private void gotoMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }
