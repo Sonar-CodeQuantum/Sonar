@@ -13,7 +13,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etNumber;
     private EditText etName;
     private EditText etPassword;
-    private Button btnSignIn;
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,9 @@ public class LoginActivity extends AppCompatActivity {
         etNumber = findViewById(R.id.etNumber);
         etName = findViewById(R.id.etName);
         etPassword = findViewById(R.id.etPassword);
-        btnSignIn = findViewById(R.id.btnSignIn);
+        btnLogin = findViewById(R.id.btnLogin);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = "";
