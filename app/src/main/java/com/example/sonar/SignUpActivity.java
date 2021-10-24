@@ -48,11 +48,14 @@ public class SignUpActivity extends AppCompatActivity {
 
                 // verify user and navigate to login on success
                 if (PhoneNumberUtils.isGlobalPhoneNumber(number)) {
+                    Log.e(TAG, "Invalid phone number: " + number);
                     Toast.makeText(SignUpActivity.this,
                             "Invalid phone number.",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
+                number = PhoneNumberUtils.normalizeNumber(number);
+
                 //Create the ParseUser
                 ParseUser user = new ParseUser();
                 user.setUsername(username);
@@ -68,17 +71,15 @@ public class SignUpActivity extends AppCompatActivity {
                         } else {
                             //Sign up was not successful .. look at the ParseException
                             //to figure out what went wrong
-                            Toast.makeText(SignUpActivity.this, "Sign up not successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this,
+                                    "Sign up not successful",
+                                    Toast.LENGTH_SHORT).show();
                             Log.e(TAG, "Parse Exception: " + e);
-
                         }
                     }
                 });
-
             }
-
         });
-
     }
 
     private void gotoMainActivity() {
