@@ -23,9 +23,6 @@
             android:name=".SigninActivity"
             android:exported="false" />
         <activity
-            android:name=".SigninActivity"
-            android:exported="false" />
-        <activity
             android:name=".SigninLoginOption"
             android:exported="false" />
         <activity
