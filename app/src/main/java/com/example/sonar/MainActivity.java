@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.sonar.Fragments.AlertFragment;
-import com.example.sonar.Fragments.FriendsListFragment;
-import com.example.sonar.Fragments.ProfileFragment;
+import com.example.sonar.fragments.AlertFragment;
+import com.example.sonar.fragments.FriendsListFragment;
+import com.example.sonar.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
