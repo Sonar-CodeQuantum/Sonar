@@ -18,7 +18,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
         app:menu="@menu/menu_bottom_navigation"
+        app:itemBackground="@color/purple_500"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         tools:ignore="MissingConstraints" />
 
 </RelativeLayout>
