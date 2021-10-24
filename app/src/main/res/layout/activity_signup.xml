@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".SigninActivity">
+    tools:context=".SignUpActivity">
 
     <TextView
         android:id="@+id/nameLabel"
@@ -152,6 +152,7 @@
         android:layout_width="321dp"
         android:layout_height="51dp"
         android:layout_marginTop="23dp"
+        android:background="@color/purple_500"
         android:fontFamily="@font/oxygen"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
