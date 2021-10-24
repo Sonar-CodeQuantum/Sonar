@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.telephony.PhoneNumberFormattingTextWatcher;
@@ -93,14 +94,23 @@ public class AddFriendFragment extends Fragment {
                         Toast.makeText(getActivity(),
                                 "Added " + newFriend.getString("name"),
                                 Toast.LENGTH_SHORT).show();
+                        gotoFriendsListFragment();
                     } else { // on failure
-                        Log.e(TAG, "Error occured while adding friend" +
+                        Log.e(TAG, "Error occurred while adding friend" +
                                 "\nError: " + e);
                         Toast.makeText(getActivity(),
                                 "Could not add friend",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+
+            private void gotoFriendsListFragment() {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                activity.getSupportFragmentManager().beginTransaction().
+                        replace(R.id.flContainer, new FriendsListFragment()).
+                        addToBackStack(null).
+                        commit();
             }
         });
     }
