@@ -9,7 +9,7 @@
     tools:context=".SignUpActivity">
 
     <ImageView
-        android:id="@+id/SonarLogo"
+        android:id="@+id/ivPhoto"
         android:layout_width="192dp"
         android:layout_height="193dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +39,7 @@
         android:ems="10"
         android:hint="Enter password"
         android:inputType="text"
+        android:password="true"
         android:shadowColor="#000000"
         android:singleLine="true"
         android:textColor="#FFFFFF"
@@ -46,9 +47,9 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnSignUp"
+        app:layout_constraintStart_toStartOf="@+id/btnConfirm"
         app:layout_constraintTop_toBottomOf="@+id/passwordLabel" />
 
     <EditText
@@ -77,7 +78,7 @@
         android:layout_height="wrap_content"
         android:autoText="false"
         android:ems="10"
-        android:hint="(XXX)-XXX-XXXX"
+        android:hint="(XXX) XXX-XXXX"
         android:inputType="phone"
         android:shadowColor="#000000"
         android:singleLine="true"
@@ -131,10 +132,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SonarLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPhoto" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnConfirm"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginLeft="25dp"
@@ -156,8 +157,8 @@
         android:fontFamily="@font/oxygen"
         android:text="Don't have an account?"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/btnSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+        app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
 
     <TextView
         android:id="@+id/tvSignIn"
