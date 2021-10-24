@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/sonar_logo_transparent" />
 
     <EditText
-        android:id="@+id/userPasswordEntry"
+        android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:autoText="false"
@@ -34,13 +34,13 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/signInButton"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signInButton"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
     <EditText
-        android:id="@+id/UserNameEntry"
+        android:id="@+id/etName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autoText="false"
@@ -54,13 +54,13 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/userPasswordEntry"
+        app:layout_constraintEnd_toEndOf="@+id/etPassword"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nameLabel"
         app:layout_constraintTop_toBottomOf="@+id/NameLabel" />
 
     <EditText
-        android:id="@+id/UserPhoneEntry"
+        android:id="@+id/etNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -75,7 +75,7 @@
         android:textColorHint="#8DFFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="@+id/UserNameEntry"
+        app:layout_constraintEnd_toEndOf="@+id/etName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/NameLabel"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
@@ -90,8 +90,8 @@
         android:text="name"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/UserNameEntry"
-        app:layout_constraintTop_toBottomOf="@+id/UserPhoneEntry" />
+        app:layout_constraintStart_toStartOf="@+id/etName"
+        app:layout_constraintTop_toBottomOf="@+id/etNumber" />
 
     <TextView
         android:id="@+id/phoneNumberLabel"
@@ -103,7 +103,7 @@
         android:text="mobile number"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/UserPhoneEntry"
+        app:layout_constraintStart_toStartOf="@+id/etNumber"
         app:layout_constraintTop_toBottomOf="@+id/SignUpText" />
 
     <TextView
@@ -123,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/SonarLogo" />
 
     <Button
-        android:id="@+id/signInButton"
+        android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginLeft="25dp"
@@ -135,7 +135,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPasswordEntry" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <TextView
         android:id="@+id/DontHaveAccTxt"
@@ -147,11 +147,11 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signInButton"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <TextView
-        android:id="@+id/SignUp"
+        android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up →"
@@ -169,8 +169,8 @@
         android:text="password"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/userPasswordEntry"
-        app:layout_constraintTop_toBottomOf="@+id/UserNameEntry" />
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
