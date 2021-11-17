@@ -1,6 +1,6 @@
 # SONAR
 By Vanessa Gerber, Tiba Al Anssari, Kimberly Flores  
-***General Track Winner & Google Cloud Winner***
+***General Track Winner & Google Cloud Winner***  
 https://devpost.com/software/sonar-s0oi4n
 
 ## Inspiration
